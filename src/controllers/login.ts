@@ -3,6 +3,7 @@ import User from '../models/User';
 import { comparePassword, generateToken } from '../helpers/authHelpers';
 
 export const login = async (req: Request, res: Response) => {
+  console.log('Received request to /api/login in auth-service');
   const { username, password } = req.body;
 
   try {
@@ -19,8 +20,10 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const token = generateToken(user);
+    console.log('User logged in successfully:', user);
     res.status(200).json({ token });
   } catch (error) {
+    console.error('Error logging in user:', error);
     res.status(500).json({ error: 'Server error' });
   }
 };

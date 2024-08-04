@@ -9,6 +9,7 @@ class User extends Model {
   public password!: string;
 }
 
+
 User.init({
   id: {
     type: DataTypes.INTEGER,
